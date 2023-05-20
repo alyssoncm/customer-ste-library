@@ -5,6 +5,6 @@ COPY ./app/package.json /app
 RUN npm install -g @angular/cli
 RUN npm install --legacy-peer-deps
 COPY ./app/ /app
-RUN node --max_old_space_size=250 ./node_modules/@angular/cli/bin/ng build --configuration production
+RUN node ./node_modules/@angular/cli/bin/ng build --configuration production
 FROM nginx:latest
 COPY --from=build-step /app/dist /usr/share/nginx/html
